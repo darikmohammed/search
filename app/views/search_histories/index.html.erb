@@ -1,0 +1,14 @@
+<div class='flex flex-col gap-4'>
+
+  <div>
+    <%= link_to '< Back', articles_path%>
+  </div>
+  <h1 class='text-xl font-bold'>SearchHistories</h1>
+  <% @search_histories.each do |history|%>
+    <div class= 'card'>
+      <h4 class="text-md font-bold text-gray-900 truncate"><%= history.search_string%></h4>
+      <p class="text-sm text-gray-500 truncate">By user_id: <%= history.user.id%> </p>
+      <p class="text-sm text-gray-500 truncate">Last Update: <%= history.updated_at%> </p>
+    </div>
+  <%end%>
+</div>

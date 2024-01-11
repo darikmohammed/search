@@ -2,9 +2,11 @@
 
 <%= render @article %>
 
-<div>
-  <%= link_to "Edit this article", edit_article_path(@article) %> |
-  <%= link_to "Back to articles", articles_path %>
+<div class = 'flex-col'>
+  <div class='flex gap'>
+    <%= link_to "Edit this article", edit_article_path(@article), class:'btn margin-top' %> 
+    <%= link_to "Back to articles", articles_path, class:'btn margin-top' %>
+  </div>
 
-  <%= button_to "Destroy this article", @article, method: :delete %>
+  <%= button_to "Destroy this article", @article, method: :delete, class:'btn-destroy margin-top' %>
 </div>

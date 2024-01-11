@@ -1,9 +1,14 @@
+<div class='flex flex-col gap-4 w-full'>
+
+<div>
+  <%= link_to '< Back', articles_path%>
+</div>
+
 <h1>New article</h1>
 
 <%= render "form", article: @article %>
 
+</div>
+
 <br>
 
-<div>
-  <%= link_to "Back to articles", articles_path %>
-</div>
