@@ -1,12 +1,16 @@
-<p style="color: green"><%= notice %></p>
+<div class='flex flex-col gap-2'>
 
-<%= render @article %>
+  <p style="color: green"><%= notice %></p>
 
-<div class = 'flex-col'>
-  <div class='flex gap'>
-    <%= link_to "Edit this article", edit_article_path(@article), class:'btn margin-top' %> 
-    <%= link_to "Back to articles", articles_path, class:'btn margin-top' %>
+  <%= render @article %>
+
+  <div class = 'flex-col'>
+    <div class='flex gap'>
+      <%= link_to "Edit this article", edit_article_path(@article), class:'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2  margin-top' %> 
+      <%= link_to "Back to articles", articles_path, class:'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2  margin-top' %>
+    </div>
+
+    <%= button_to "Delete this article", @article, method: :delete, class:'btn-destroy margin-top' %>
   </div>
-
-  <%= button_to "Destroy this article", @article, method: :delete, class:'btn-destroy margin-top' %>
 </div>
+
