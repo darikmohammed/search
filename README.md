@@ -22,21 +22,21 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [Realtime search box- Helpjuice] <a name="about-project"></a>
+# 📖 Realtime search box- Helpjuice <a name="about-project"></a>
 
-> A realtime search box, where users search articles, and then to have analytics that display what users were searching for. Show record of users input in realtime and ultimately display analytics & trends on what people are searching for the most.
+> A real-time search box, where users search articles, and then have analytics that displays what users were searching for. Show a record of user input in real-time 
 
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
 
-> Built in with Ruby on Rails
+> Built-in with Ruby on Rails
 
 <details>
   <summary>Client</summary>
   <ul>
     <li><a href="https://reactjs.org/">html.erb</a></li>
-    <li><a href="https://reactjs.org/">CSS</a></li>
+    <li><a href="https://reactjs.org/">Tailwind CSS</a></li>
   </ul>
 </details>
 
@@ -58,35 +58,33 @@
 
 ### Key Features <a name="key-features"></a>
 
-> Realtime search box and analytics of user searching.
+> Real-time search box and analytics of user searching.
 
 - **[Realtime Searching]**
-- **[Analytics of user searching]**
 - **[Show record of user input]**
-
+- **[Compare the search that is made in the past 30 min]**
+- **[Check the similarity of the search before updating using A collection of text algorithms]**
+  
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- LIVE DEMO -->
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-> Add a link to your deployed project.
 
-- [Render Live Demo Link](https://helpjuice-a3i6.onrender.com)
-- [Railway Live Demo](https://helpjuice-testproject-production-df19.up.railway.app/)
+- [Render Live Demo Link](https://#)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
-> Describe how a new developer could make use of your project.
-
 To get a local copy up and running, follow these steps.
 
 ### Prerequisites
 
-In order to run this project you need:
+To run this project you need:
 
 ```sh
  gem install rails
@@ -97,7 +95,7 @@ In order to run this project you need:
 Clone this repository to your desired folder:
 
 ```sh
-  git clone git@github.com:darikmohammed/Helpjuice-testProject.git
+  git clone git@github.com:darikmohammed/search.git
 ```
 
 ### Install
@@ -105,7 +103,7 @@ Clone this repository to your desired folder:
 Install this project with:
 
 ```sh
-  cd Helpjuice-testProject
+  cd search
   bundle install
   rails db:setup
   rails db:seed
@@ -124,14 +122,13 @@ To run the project, execute the following command:
 To run tests, run the following command:
 
 ```sh
-  rspec spec
+  bundle exec rspec 
 ```
 
 <!-- AUTHORS -->
 
 ## 👥 Authors <a name="authors"></a>
 
-> Mention all of the collaborators of this project.
 
 👤 **Darik Mohammed**
 
