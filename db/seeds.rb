@@ -6,9 +6,51 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-Article.create(title: 'What is a car?', publisher: 'Emil Hajric', published_year: 1993)
-Article.create(title: 'How is Emil Hajric doing?', publisher: 'Elon Musk', published_year: 1993)
-Article.create(title: 'Some defination of classes in Objec oriented programming?', publisher: 'Emil Hajric', published_year: 1993)
-Article.create(title: 'Why Ruby on Rails?', publisher: 'Unkown ', published_year: 2003)
-Article.create(title: 'Learning THREE JS is good thing to do now.', publisher: 'Darik Mohammed', published_year: 2021)
 
+Article.create(
+  title: 'The Impact of Climate Change',
+  publisher: 'Dr. James Johnson',
+  published_year: 2021
+)
+
+Article.create(
+  title: 'A Review of the Latest Smartphones',
+  publisher: 'Tech Magazine',
+  published_year: 2022
+)
+
+Article.create(
+  title: 'The Cost of College Education',
+  publisher: 'Mary Wilson',
+  published_year: 2019
+)
+
+Article.create(
+  title: 'Trends in Renewable Energy',
+  publisher: 'Sustainability Times',
+  published_year: 2022
+)
+
+Article.create(
+  title: 'The Benefits of Meditation',
+  publisher: 'David Lee',
+  published_year: 2021
+)
+
+Article.create(
+  title: 'The Impact of Social Media',
+  publisher: 'Sarah Davis',
+  published_year: 2020
+)
+
+Article.create(
+  title: 'A Guide to Eating Healthy',
+  publisher: 'Nutrition Magazine',
+  published_year: 2022
+)
+
+Article.create(
+  title: 'The Rise of Streaming Services',
+  publisher: 'Entertainment Weekly',
+  published_year: 2021
+)

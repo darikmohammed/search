@@ -4,7 +4,7 @@ RSpec.describe Article, type: :model do
   before(:each) do
     @user = User.new(ref: '1')
     @user.save
-    @article_post = Article.new(title: 'article title', publisher: 'article publisher', pbulished_year: 1990)
+    @article_post = Article.new(title: 'article title', publisher: 'article publisher', published_year: 1990)
   end
 
   it 'should have a title' do
@@ -16,12 +16,15 @@ RSpec.describe Article, type: :model do
     expect(@article_post).to_not be_valid
   end
   it 'should have a publisher year' do
-    @article_post.pbulished_year = nil
+    @article_post.published_year = nil
     expect(@article_post).to_not be_valid
   end
 
   it 'should have a publisher year as integer' do
-    @article_post.pbulished_year = 'hello'
+    @article_post.published_year = 'hello'
     expect(@article_post).to_not be_valid
+  end
+  it('should have a publisher year as integer') do
+    expect(Article.columns_hash['published_year'].type).to eq :integer
   end
 end
