@@ -1,6 +1,6 @@
 class SearchHistoriesController < ApplicationController
   def index
-    @search_histories = SearchHistory.includes(:user)
+    @search_histories = SearchHistory.includes(:user).order(updated_at: :desc)
 
     # Check for nil before accessing user
     @search_histories.each do |search_history|

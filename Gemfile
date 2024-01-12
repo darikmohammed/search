@@ -73,4 +73,6 @@ group :test do
   gem 'webdrivers'
 end
 
-gem "tailwindcss-rails", "~> 2.3"
+gem 'tailwindcss-rails', '~> 2.3'
+
+gem 'text', '~> 1.3', '>= 1.3.1'

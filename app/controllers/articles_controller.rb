@@ -1,3 +1,5 @@
+require 'text'
+
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[show edit update destroy]
   before_action :current_visitor
@@ -29,34 +31,6 @@ class ArticlesController < ApplicationController
     else
       render :index
     end
-  end
-
-  def store_search_history(search_data)
-    search_history = SearchHistory.where(user: @current_visitor).order('updated_at DESC')
-    puts 'Search Data: '
-    p search_data
-    puts 'Search History: '
-    p search_history
-    related_result = search_related(search_history, search_data)
-    puts 'Related Result: '
-    p related_result
-    related_result[:db_change] && related_result[:update].update(search_string: search_data)
-
-    related_result[:db_create] ? SearchHistory.create(search_string: search_data, user: @current_visitor) : nil
-  end
-
-  def search_related(search_history, search_data)
-    search_history.each do |history|
-      if history.search_string.strip.downcase.start_with?(search_data.strip.downcase)
-        return { db_change: false, db_create: false,
-                 update: nil }
-      end
-      if search_data.strip.downcase.include?(history.search_string.strip.downcase)
-        return { db_change: true, db_create: false,
-                 update: history }
-      end
-    end
-    { db_change: false, db_create: true, update: nil }
   end
 
   # GET /articles/1 or /articles/1.json
@@ -113,6 +87,42 @@ class ArticlesController < ApplicationController
   end
 
   private
+
+  def store_search_history(search_data)
+    search_history = SearchHistory.where(user: @current_visitor).where('updated_at > ?',
+                                                                       30.minutes.ago).order('updated_at DESC')
+
+    related_result = search_related(search_history, search_data)
+
+    related_result[:db_change] && related_result[:update].update(search_string: search_data)
+
+    related_result[:db_create] ? SearchHistory.create(search_string: search_data, user: @current_visitor) : nil
+  end
+
+  def search_related(search_history, search_data)
+    search_history.each do |history|
+      if history.search_string.strip.downcase.start_with?(search_data.strip.downcase) || similarity(history
+                                                                                                    .search_string,
+                                                                                                    search_data)
+        return { db_change: false, db_create: false,
+                 update: nil }
+      end
+      if search_data.strip.downcase.include?(history.search_string.strip.downcase) || (similarity(history.search_string,
+                                                                                                  search_data) > 0.7 &&
+                                                                                                  search_data.length >=
+                                                                                                  history.search_string
+                                                                                                  .length)
+        return { db_change: true, db_create: false,
+                 update: history }
+      end
+    end
+    { db_change: false, db_create: true, update: nil }
+  end
+
+  def similarity(history, search)
+    white = Text::WhiteSimilarity.new
+    white.similarity(history, search)
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_article
