@@ -15,8 +15,6 @@ Rails.application.configure do
   config.eager_load = true
 
   # Full error reports are disabled and caching is turned on.
-  config.host_authorization = { exclude: ->(request) { request.path =~ /healthcheck/ } }
-
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
@@ -95,5 +93,5 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  Rails.application.config.hosts << "helpjuice-testproject-production-df19.up.railway.app"
+  # Rails.application.config.hosts << "helpjuice-testproject-production-df19.up.railway.app"
 end
