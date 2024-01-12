@@ -101,21 +101,19 @@ class ArticlesController < ApplicationController
 
   def search_related(search_history, search_data)
     search_history.each do |history|
-      if history.search_string.strip.downcase.start_with?(search_data.strip.downcase) || similarity(history
-                                                                                                    .search_string,
-                                                                                                    search_data)
-        return { db_change: false, db_create: false,
-                 update: nil }
+      if history.search_string.strip.downcase.start_with?(search_data.strip.downcase) ||
+         (similarity(history.search_string, search_data) > 0.7 &&
+          search_data.length < history.search_string.length)
+        return { db_change: false, db_create: false, update: nil }
       end
-      if search_data.strip.downcase.include?(history.search_string.strip.downcase) || (similarity(history.search_string,
-                                                                                                  search_data) > 0.7 &&
-                                                                                                  search_data.length >=
-                                                                                                  history.search_string
-                                                                                                  .length)
-        return { db_change: true, db_create: false,
-                 update: history }
+
+      if search_data.strip.downcase.include?(history.search_string.strip.downcase) ||
+         (similarity(history.search_string, search_data) > 0.7 &&
+          search_data.length >= history.search_string.length)
+        return { db_change: true, db_create: false, update: history }
       end
     end
+
     { db_change: false, db_create: true, update: nil }
   end
 
